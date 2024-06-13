@@ -6,9 +6,34 @@
 
 // console.log(user);
 
-let arr = [10,20,30,40]
-let a = arr.filter((a)=>{
-    return a>30
-})
-console.log(a)
+// let arr = [10,20,30,40]
+// let a = arr.filter((a)=>{
+//     return a>30
+// })
+// console.log(a)
 
+
+// let user=prompt("Please enter your age");
+//     if(user>18){
+//     console.log("done")
+//    }else{
+//     console.log("not done")
+//    }
+
+
+// Callback
+// function greet(name) { 
+//     alert('Hello ' + name); 
+// }
+//  function greeting(callback) { 
+//     var name = prompt('Please enter your name.'); 
+//     callback(name);
+//  }
+
+// FS Module
+
+let fs = require('fs')
+
+fs.appendFile('mine.txt', 'this is mine here' + '!\n', ()=> {
+    console.log('file is created');
+})
