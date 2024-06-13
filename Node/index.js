@@ -32,8 +32,24 @@
 
 // FS Module
 
-let fs = require('fs')
+// let fs = require('fs')
 
-fs.appendFile('mine.txt', 'this is mine here' + '!\n', ()=> {
-    console.log('file is created');
+// fs.appendFile('mine.txt', 'this is mine here' + '!\n', ()=> {
+//     console.log('file is created');
+// })
+
+// OS MOdule
+// let os = require('os');
+// console.log(os.userInfo());
+
+// Print Username 
+const fs = require('fs')
+const os = require('os')
+
+const username = os.userInfo().username
+fs.appendFile('mine.txt', 'username: ' + username ,()=> {
+    console.log(username)
 })
+
+// How to Import & Export File
+ 
