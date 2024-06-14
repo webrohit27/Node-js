@@ -5,7 +5,11 @@
 // console.log(mine);
 
 
-let two = require ('./one')
-let sum = two.add(20,40)
-let d = two.mine
-console.log(sum);
+// let two = require ('./one')
+// let sum = two.add(20,40)
+// let d = two.mine
+// console.log(sum);
+
+
+
+

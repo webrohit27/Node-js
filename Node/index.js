@@ -42,14 +42,18 @@
 // let os = require('os');
 // console.log(os.userInfo());
 
-// Print Username 
-const fs = require('fs')
-const os = require('os')
+// // Print Username 
+// const fs = require('fs')
+// const os = require('os')
 
-const username = os.userInfo().username
-fs.appendFile('mine.txt', 'username: ' + username ,()=> {
-    console.log(username)
-})
+// const username = os.userInfo().username
+// fs.appendFile('mine.txt', 'username: ' + username ,()=> {
+//     console.log(username)
+// })
 
 // How to Import & Export File
  
+// let _ = require ('lodash')
+// console.log(_.isString(true));
+
+let one = 
