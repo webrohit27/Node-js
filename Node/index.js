@@ -62,8 +62,10 @@
 const express = require('express')
 const app = express()
 
-app.get('/', function (req, res) {
+app.get('/app', function (req, res) {
   res.send('Jai Shree Ram')
 })
 
-app.listen(3000)
+app.listen(3000, ()=> {
+    console.log("3000 port is running");
+})
