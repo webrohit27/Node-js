@@ -67,5 +67,5 @@ app.get('/app', function (req, res) {
 })
 
 app.listen(3000, ()=> {
-    console.log("4000 port is running");
+    console.log("3000 port is running");
 })
