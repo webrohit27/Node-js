@@ -63,7 +63,7 @@ const express = require('express')
 const app = express()
 
 app.get('/app', function (req, res) {
-  res.send('Jai Shree Ram')
+  res.send('Sarkar')
 })
 
 app.listen(3000, ()=> {
