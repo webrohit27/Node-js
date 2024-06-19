@@ -57,15 +57,96 @@
 // let _ = require ('lodash')
 // console.log(_.isString(true));
 
-// Express 
+// // Express Js
+
+// const express = require('express')
+// const app = express()
+// const a = require('./one.js')
+
+// // middleware
+// app.use(function(req, res, next){
+//   console.log('mine');
+//   next();
+// })
+
+// app.get('/', function (req, res) {
+//   res.send('a')
+// })
+
+// app.listen(3000, ()=> {
+//     console.log("3000 port is running");
+// })
+
+
+// const express = require('express')
+//  const app = express()
+
+//  app.get('/', function (req, res) {
+//     res.send('helllo i am here')
+//   })
+//  app.get('/profile', function (req, res) {
+//     res.send('Profile')
+//   })
+//  app.get('/profile/:username', function (req, res) {
+//     res.send(`nice to mee you ${req.params.username}`)
+//   })
+  
+//   app.listen(3000, ()=> {
+//       console.log("3000 port is running");
+//   })
+
+// // Post
+// const express = require('express');
+// const app = express()
+// app.use(express.json())
+// app.get('/data', function (req, res) {
+//   let details = [{
+//     name: "Rahul",
+//     age: 25,
+//   },
+// {
+//   name: "Mohan",
+//   age: 22,
+// }
+// ]
+//   res.send(details)
+// })
+// app.post('/data/latest', function (req, res) {
+//   console.log(req.body);
+//   res.send('new data added')
+// })
+// app.listen(3000,()=>{
+//     console.log("3000 port server is running");
+// })
+
 
 const express = require('express')
 const app = express()
+app.use(express.json())
+let details = [
+    {
+      name: "Jethalal",
+      age: 55,
+    },
+    {
+      name: "Babita",
+      age: 42,
+    }
+  ];
 
-app.get('/app', function (req, res) {
-  res.send('Sarkar')
-})
+  app.get('/data', function (req, res) {
+    res.send(details)
+  })
 
-app.listen(3000, ()=> {
-    console.log("3000 port is running");
-})
+  app.post('/data/new', function (req, res) {
+    details.push(req.body)
+    res.send(details)
+  })
+
+  app.get('/data/new', function (req, res) {
+    res.send(details)
+  })
+
+  app.listen(3000,()=>{
+    console.log("3000 port server is running");
+  })
