@@ -120,33 +120,57 @@
 // })
 
 
+// const express = require('express')
+// const app = express()
+// app.use(express.json())
+// let details = [
+//     {
+//       name: "Jethalal",
+//       age: 55,
+//     },
+//     {
+//       name: "Babita",
+//       age: 42,
+//     }
+//   ];
+
+//   app.get('/data', function (req, res) {
+//     res.send(details)
+//   })
+
+//   app.post('/data/new', function (req, res) {
+//     details.push(req.body)
+//     res.send(details)
+//   })
+
+//   app.get('/data/new', function (req, res) {
+//     res.send(details)
+//   })
+
+//   app.listen(3000,()=>{
+//     console.log("3000 port server is running");
+//   })
+
+
+// PUSH Data
+
 const express = require('express')
 const app = express()
+const student = require('./student.js')
 app.use(express.json())
-let details = [
-    {
-      name: "Jethalal",
-      age: 55,
-    },
-    {
-      name: "Babita",
-      age: 42,
+app.get('/student', function (req, res) {
+  res.json(student);
+})
+  app.post('/student/data', function (req, res) {
+    let one = {
+      id:student.length+1,
+      first_name:req.body.first_name,
+      last_name:req.body.last_name,
+      email:req.body.email
     }
-  ];
-
-  app.get('/data', function (req, res) {
-    res.send(details)
+    student.push(one);
+    res.json(one);
   })
-
-  app.post('/data/new', function (req, res) {
-    details.push(req.body)
-    res.send(details)
-  })
-
-  app.get('/data/new', function (req, res) {
-    res.send(details)
-  })
-
   app.listen(3000,()=>{
     console.log("3000 port server is running");
   })
