@@ -19,7 +19,7 @@ db.on("error", (err)=>{
 
 db.on("disconnected", ()=>{
     console.log("mongoDB is disCOonected");
-})
+});
 
 db.close()
 
