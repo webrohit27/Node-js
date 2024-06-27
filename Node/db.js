@@ -11,15 +11,15 @@ mongoose.connect(mongoURL, {
 
 db.on('connected', ()=>{
     console.log("MongoDB is Connected");
-});
+})
 
 db.on("error", (err)=>{
     console.log('there is error in connection', err);
-});
+})
 
 db.on("disconnected", ()=>{
     console.log("mongoDB is disCOonected");
-});
+})
 
 db.close()
 
