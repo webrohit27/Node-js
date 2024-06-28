@@ -12,9 +12,13 @@ db.on('connected', () => {
 })
 
 db.on('error', (err) => {
-    console.log("there is error in connection', err");
+    console.log('there is error in connection', err);
 })
 
-db.on('connected', () => {
-    console.log("MongoDB is Connected");
+db.on('disconnected', () => {
+    console.log("MongoDB is disconnected");
 })
+
+// db.close() 
+
+module.exports = db;
