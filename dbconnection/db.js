@@ -12,7 +12,7 @@ db.on('connected', () => {
 })
 
 db.on('error', (err) => {
-    console.log("");
+    console.log("there is error in connection', err");
 })
 
 db.on('connected', () => {
