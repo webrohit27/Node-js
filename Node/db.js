@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const mongoURL = "mongodb://127.0.0.1:27017/new"
+const mongoURL = "mongodb://127.0.0.1:27017/Student"
 
 const db = mongoose.connection;
 
