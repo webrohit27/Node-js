@@ -1,26 +1,19 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const mongoUrl = 'mongodb://127.0.0.1:27017/student';
 
-const mongoURL = "mongodb://127.0.0.1:27017/Student"
-
+mongoose.connect(mongoUrl, {useNewUrlParser:true, useUnifiedTopology:true})
 const db = mongoose.connection;
 
-mongoose.connect(mongoURL, {
-    useNewUrlParser: true,
-    useUnifiedTopology:true
-})
+db.on('connected',()=>{
+    console.log('Connected to mongodb');
+});
 
-db.on('connected', ()=>{
-    console.log("MongoDB is Connected");
-})
+db.on('error',(err)=>{
+    console.log('There is error in connection',err);
+});
 
-db.on("error", (err)=>{
-    console.log('there is error in connection', err);
-})
-
-db.on("disconnected", ()=>{
-    console.log("mongoDB is disCOonected");
-})
-
-// db.close()
-
-module.exports = db;
+db.on('disconnected',(err)=>{
+    console.log('mongodb disconnected');
+});
+// db.close();
+module.exports = db
