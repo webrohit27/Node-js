@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 app.get("/", function (req, res) {
   res.send("successful");
 });
+
 app.post("/office", async (req, res) => {
   try {
     const data = req.body;
@@ -18,6 +19,7 @@ app.post("/office", async (req, res) => {
     console.log(error);
   }
 });
+
 app.get("/office", async (req, res) => {
   try {
     const response = await office.find({});
