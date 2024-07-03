@@ -32,7 +32,7 @@ app.get("/office", async (req, res) => {
 app.get('/office/:work', async(req, res)=>{
     try{
         const work = req.params.work;
-        if(work=='developer' || work =='tester' || work=='manager'){
+        if(work=='developer' || work =='CEO' || work=='Manager'){
             const response = await office.find({employee_work:work})
             console.log('data fetch')
             res.status(200).json(response)
