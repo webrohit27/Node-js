@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
-const mongoUrl = "mongodb://127.0.0.1:27017/company";
+require('dotenv').config()
 
-mongoose.connect(mongoUrl, {useNewUrlParser:true, useUnifiedTopology:true})
+ const mongoURL = process.env.MONGO_DB_LOCAL;
+
+// const mongoDB = "mongodb+srv://webrohit27:1234@newcomp.xgkgr66.mongodb.net/"
+
+mongoose.connect(mongoURL, {useNewUrlParser:true, useUnifiedTopology:true})
 const db = mongoose.connection;
 
 db.on('connected',()=>{
@@ -15,5 +19,7 @@ db.on('error',(err)=>{
 db.on('disconnected',(err)=>{
     console.log('mongodb disconnected');
 });
+
+
 // db.close();
 module.exports = db
