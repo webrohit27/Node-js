@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 const officeSchema = new mongoose.Schema({
+    
+    employee_id: { 
+        type: Number,
+        required: true,
+     },
     employee_name: { 
         type: String,
         required: true,
