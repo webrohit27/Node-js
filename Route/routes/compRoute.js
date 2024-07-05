@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const comp = require('../models/comp')
 
+// here we create data on server 
+
 router.post("/", async (req, res) => {
     try {
       const data = req.body;
@@ -13,8 +15,11 @@ router.post("/", async (req, res) => {
       console.log(error);
     }
   });
+
+  // here we get data from server by the help of `{router.get method}`
+
   router.get("/", async (req, res) => {
-    try {
+    try { 
       const response = await comp.find({});
       console.log("data fetch");
       res.status(200).json(response);
@@ -24,6 +29,8 @@ router.post("/", async (req, res) => {
     }
   });
 
+
+  // Here we find our data 
   router.get('/:work', async(req, res)=>{
     try{      
         const mine = req.params.work;
@@ -42,6 +49,8 @@ router.post("/", async (req, res) => {
     }
 })
 
+
+// Here we update our data
 router.put('/:id', async(req, res)=>{
     try{      
         const emp = req.params.id;
@@ -63,6 +72,8 @@ router.put('/:id', async(req, res)=>{
     }
 })
 
+
+// here we delete our data
 router.delete('/:id', async(req, res)=>{
   try{      
       const del = req.params.id;
