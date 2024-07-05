@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 require('dotenv').config()
 
- const mongoURL = process.env.MONGO_DB_LOCAL;
+//  const mongoURL = process.env.MONGO_DB_LOCAL;
 
-// const mongoDB = "mongodb+srv://webrohit27:1234@newcomp.xgkgr66.mongodb.net/"
+const mongoDB = "mongodb+srv://Old:7777@old.kxg7c03.mongodb.net/"
 
-mongoose.connect(mongoURL, {useNewUrlParser:true, useUnifiedTopology:true})
+mongoose.connect(mongoDB, {useNewUrlParser:true, useUnifiedTopology:true})
 const db = mongoose.connection;
 
 db.on('connected',()=>{
