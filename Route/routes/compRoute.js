@@ -73,6 +73,21 @@ router.put('/:id', async(req, res)=>{
 })
 
 
+router.patch('/Comp/:id',async(req,res)=>{
+  try{
+    const id=req.params.id
+    const updatecomp=await comp.findByIdAndUpdate(id,req.body,{
+      new:true
+    })
+    res.send(updatecomp)
+  }
+  catch(error){
+    console.log(error);
+    res.status(400).json({message:"internal server error1"})
+  }
+})
+
+
 // here we delete our data
 router.delete('/:id', async(req, res)=>{
   try{      
