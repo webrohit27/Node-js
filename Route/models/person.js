@@ -24,14 +24,12 @@ const person = new mongoose.Schema({
     },
     username:{
         required: true,
-        type: String
+        type:String
     },
-    
     password:{
         required: true,
-        type: String
-    },
-    
+        type:String
+    }
 })
 
 const Person = mongoose.model('Person', person);
