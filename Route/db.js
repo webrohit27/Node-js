@@ -21,7 +21,7 @@ db.on('disconnected',(err)=>{
 });
 
 
-db.close();
+// db.close();
 module.exports = db
 
 
