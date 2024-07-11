@@ -1,40 +1,36 @@
 const express = require("express");
   const app = express();
   const db = require("./db.js");
-   const person = require("./models/person.js");
-  const passport = require('passport');
-  const local = require('passport-local').Strategy;
+  require('dotenv').config();
+  const passport =  require('./auth.js')
+  const person = require("./models/person.js")
   const bodyParser = require('body-parser')
   app.use(bodyParser.json());
-  require('dotenv').config();
 
-  passport.use(new local(async(Username, Password, done) => {
-    try{
-      console.log('receive:', Username, Password);
-      const user = await person.findOne({ username:Username });
-      if (!user) 
-        return done(null, false, {message: 'incorrect username'});
-      const pass = user.password === Password? true: false;
-      if(pass){
-        return done(null, user);
-      }
-      else{
-        return done(null, false, {message: 'incorrect password'});
-      }
-    }catch(err){
-      return done(err)
-    }
-  }))
   app.use(passport.initialize())
-  app.get("/", function (req, res) {
+ 
+  const passA = passport.authenticate('local', {session:false})
+  app.get("/", passA, function (req, res) {
     res.send("successful");
   });
 
-  app.post("/person", function (req, res) {
+
+  app.post("/person",  function (req, res) {
   const data = req.body
   const newPerson = new person(data)
   res.send(newPerson)
   newPerson.save()
+  });
+
+  app.get('/person', passA, async function (req, res) {
+    try {
+      const people = await person.find({});
+      console.log('data fetch');
+      res.status(200).json(people);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({msg : "internal server error"});
+    }
   });
 
   const PORT = process.env.PORT; 
@@ -42,3 +38,6 @@ const express = require("express");
   app.listen(PORT, () => {    
     console.log("server is running");       
   })
+
+
+
