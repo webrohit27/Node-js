@@ -7,8 +7,9 @@ passport.use(new local(async(Username, Password, done) => {
     //   console.log('receive:', Username, Password);
       const user = await person.findOne({ username:Username });
       if (!user) 
-        return done(null, false, {message: 'incorrect username'});
-      const pass = user.password === Password? true: false;
+        return done(null, false, {message: 'incorrect username'}); 
+    //   const pass = user.password === Password? true: false;
+         const pass = await user.comparePassword(Password)
       if(pass){
         return done(null, user);
       }
