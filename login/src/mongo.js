@@ -31,3 +31,6 @@ const userSchema = new mongoose.Schema({
 })
 const Login = new mongoose.model('Login', userSchema);
 module.exports = Login
+
+
+
