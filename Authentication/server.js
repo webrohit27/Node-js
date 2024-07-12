@@ -6,7 +6,6 @@ const express = require("express");
   const person = require("./models/person.js")
   const bodyParser = require('body-parser')
   app.use(bodyParser.json());
-
   app.use(passport.initialize())
  
   const passA = passport.authenticate('local', {session:false})
@@ -21,9 +20,10 @@ const express = require("express");
   res.send(newPerson)
   newPerson.save()
   });
+  
 
   app.get('/person', passA, async function (req, res) {
-    try {
+    try{
       const people = await person.find({});
       console.log('data fetch');
       res.status(200).json(people);
