@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoDB = "mongodb+srv://Old:<password>@old.kxg7c03.mongodb.net/"
+const mongoDB = "mongodb+srv://Log:<password>@log.k6coly0.mongodb.net/"
 
 mongoose.connect(mongoDB, {useNewUrlParser:true, useUnifiedTopology:true})
 const db = mongoose.connection;
@@ -13,11 +13,9 @@ db.on('error',(err)=>{
     console.log('There is error in connection', err);
 });
 
-db.on('disconnected',(err)=>{
+db.on('disconnected', (err)=>{
     console.log('mongodb disconnected');
 });
-
-
 
 const userSchema = new mongoose.Schema({
     name:{

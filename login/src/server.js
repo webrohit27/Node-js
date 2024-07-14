@@ -4,10 +4,10 @@ const path = require('path');
 const hbs = require('hbs');
 const db = require('./mongo')
 const template = path.join(__dirname, '../templates')
-app.use(express.json());
-app.use(express.urlencoded({ extended:false}))
+app.use(express.json());   // middleware
+app.use(express.urlencoded({ extended:false})) // middleware  
 app.set('view engine','hbs')
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../public')));   //css file 
 app.set('views',template)
 
 app.get('/', (req, res) => {
@@ -32,7 +32,7 @@ app.post('/login', async(req, res) => {
         const check = await db.findOne({name:req.body.name})
         if(check.password === req.body.password){
             res.render("home",{naming: `${req.body.password}+${req.body.name}`})
-        }else{
+        }else{ 
             res.send("incorrect password")
         }
     }
