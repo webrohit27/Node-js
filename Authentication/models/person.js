@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');``
+const validator = require('validator');
 const person = new mongoose.Schema({
     name: { 
         type: String,
         required: true,
+        minlength:3,
+        maxlength:7
      },
     work : {
         type: String,
@@ -16,8 +19,13 @@ const person = new mongoose.Schema({
     },
     email : {
         type: String, 
-        unique: true,
-        required: true
+        required: true,
+        unique:[true,"email already present"],
+        validate(value){
+            if(!validator.isEmail(value)){
+                throw new Error("Invalid email")
+            }
+        }
     },
     salary : {
         type: Number,
@@ -36,27 +44,26 @@ const person = new mongoose.Schema({
 person.pre('save', async function(next){
     const person = this;
 
-    if (!person.isModified('password')) return next();
+    if(!person.isModified('password')) return next();
 
     try{
         const salt = await bcrypt.genSalt(10);
         person.password = await bcrypt.hash(person.password, salt);
         next();
-    }
-    catch(err){
-        return next(err); 
+    }catch(err){
+        return next(err);
     }
 })
 
 person.methods.comparePassword = async function(candidatePassword){
     try{
-        const match =  await bcrypt.compare(candidatePassword, this.password);
+        const match = await bcrypt.compare(candidatePassword, this.password);
         return match;
-    }
-    catch(err){
+    }catch(err){
 
     }
 }
+
 
 const Person = mongoose.model('Person', person);
 module.exports = Person

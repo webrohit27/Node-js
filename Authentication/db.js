@@ -3,7 +3,7 @@ require('dotenv').config()
 
  // const mongoURL = process.env.MONGO_DB_LOCAL;
 
-  const mongoDB = "mongodb+srv://Old:7777@old.kxg7c03.mongodb.net/"
+  const mongoDB = "mongodb+srv://Old:1234@old.kxg7c03.mongodb.net/"
 
 mongoose.connect(mongoDB, {useNewUrlParser:true, useUnifiedTopology:true})
 const db = mongoose.connection;
