@@ -15,23 +15,15 @@ app.post('/person', function (req, res) {
     newPerson.save()
     res.json(newPerson)
 })
-
-app.get('/person', function(req, res) {
-    // Check if the database connection is open
-    if (!db.connected) {
-        return res.status(503).send('Service Unavailable - Database not connected.');
+app.get('/person', async(req, res)=>{
+    try{
+        const response = await Person.find({})
+        res.json(response)
     }
-
-    Person.find({}, function(err, persons) {
-        if (err) {
-            console.error('Error fetching persons:', err);
-            res.status(500).json({ message: 'Internal Server Error' });
-        } else {
-            res.json(persons);
-        }
-    });
-});
-
+    catch(error){
+        res.status(400).json({message: error.message})
+    }
+})
 
 app.listen(3000,()=>{
     console.log('server is running on port 3000');

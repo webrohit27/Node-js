@@ -16,13 +16,8 @@ const personSchema = new mongoose.Schema({
     email : {
         type: String, 
         required: true,
-        unique:[true,"email already present"],
-        validate(value){
-            if(!validator.isEmail(value)){
-                throw new Error("Invalid email")
-            }
-        }
-    },
+        unique:true},
+        
     phone:{
         type:Number,
         required: true,

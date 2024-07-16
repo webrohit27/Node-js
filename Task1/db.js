@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const mongoDB ='mongodb+srv://Task:1234@task.xqnrqmr.mongodb.net/'
+const mongoURL ='mongodb://127.0.0.1:27017/task'
 
-mongoose.connect(mongoDB)
+mongoose.connect(mongoURL)
 
 const db =  mongoose.connection
 
