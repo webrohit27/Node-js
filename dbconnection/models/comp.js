@@ -29,10 +29,8 @@ const empSchema = new mongoose.Schema({
   }
 });
 
-// Compile the Schema into a Model
+// Compile the Schema into a Models
 const comp = mongoose.model('Individual', empSchema);
 
 module.exports = comp;
 
-
-const mongoose 
