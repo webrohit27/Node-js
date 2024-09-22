@@ -32,7 +32,7 @@ app.post('/login', async(req, res) => {
         const check = await db.findOne({name:req.body.name})
         if(check.password === req.body.password){
             res.render("home",{naming: `${req.body.password}+${req.body.name}`})
-        }else{ 
+        }else{
             res.send("incorrect password")
         }
     }

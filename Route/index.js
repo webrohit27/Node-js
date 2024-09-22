@@ -2,7 +2,7 @@ const express = require("express");
   const app = express();
   const db = require("./db.js");
    const person = require("./models/person.js");
-  const passport = require('passport');
+  const passport = require('passport'); 
   const local = require('passport-local').Strategy;
   const bodyParser = require('body-parser')
   app.use(bodyParser.json());
